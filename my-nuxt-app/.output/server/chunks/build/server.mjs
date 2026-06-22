@@ -607,12 +607,12 @@ const _routes = [
   {
     name: "products-id",
     path: "/products/:id()",
-    component: () => import('./_id_-CZAe_Plh.mjs')
+    component: () => import('./_id_-DQON6bAN.mjs')
   },
   {
     name: "products",
     path: "/products",
-    component: () => import('./index-QkBbSPTf.mjs')
+    component: () => import('./index-C0Zo_FEU.mjs')
   },
   {
     name: "index",
@@ -1535,5 +1535,5 @@ let entry;
 }
 const entry_default = ((ssrContext) => entry(ssrContext));
 
-export { _export_sfc as _, __nuxt_component_0 as a, asyncDataDefaults as b, createError as c, useRoute as d, entry_default as default, fetchDefaults as f, useNuxtApp as u };
+export { _export_sfc as _, __nuxt_component_0 as a, useRoute as b, asyncDataDefaults as c, createError as d, entry_default as default, fetchDefaults as f, useNuxtApp as u };
 //# sourceMappingURL=server.mjs.map

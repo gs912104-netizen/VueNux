@@ -1,18 +1,19 @@
 <template>
-  <div>
-    <h2>🔍 安全串接驗證頁面</h2>
-    
-    <div v-if="pending">正在透過安全網閘讀取資料...</div>
-    <div v-else-if="error" style="color: red;">讀取失敗：{{ error.message }}</div>
-    
-    <div v-else-if="product" style="background: #eef9f4; padding: 15px; border-radius: 4px;">
-      <p>商品名稱: <strong>{{ product.name }}</strong></p>
-      <p>商品價格: <strong>${{ product.price }}</strong></p>
+    <div>
+        <h2>🔍 安全串接驗證頁面</h2>
+
+        <div v-if="pending">正在透過安全網閘讀取資料...</div>
+        <div v-else-if="error" style="color: red;">讀取失敗：{{ error.message }}</div>
+
+        <div v-else-if="product" style="background: #eef9f4; padding: 15px; border-radius: 4px;">
+            <p>商品編號: <strong>{{ product.id }}</strong></p>
+            <p>商品名稱: <strong>{{ product.name }}</strong></p>
+            <p>商品價格: <strong>${{ product.price }}</strong></p>
+        </div>
+
+        <br />
+        <NuxtLink to="/products">⬅️ 返回列表</NuxtLink>
     </div>
-    
-    <br />
-    <NuxtLink to="/products">⬅️ 返回列表</NuxtLink>
-  </div>
 </template>
 
 <script setup>

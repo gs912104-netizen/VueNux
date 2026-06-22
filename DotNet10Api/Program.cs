@@ -1,9 +1,16 @@
+// Program.cs
 var builder = WebApplication.CreateBuilder(args);
 
-// ==================== 1. 註冊 Swagger 服務 ====================
-builder.Services.AddControllers();
-builder.Services.AddEndpointsApiExplorer(); // 讓系統能掃描 API 節點
-builder.Services.AddSwaggerGen();           // 生成 Swagger 文件產生器
+// 💡 調整這裡：強制讓所有的 Dictionary 或 Object 在轉成 JSON 時自動變成小寫開頭
+builder.Services.AddControllers()
+    .AddJsonOptions(options =>
+    {
+        options.JsonSerializerOptions.PropertyNamingPolicy = System.Text.Json.JsonNamingPolicy.CamelCase;
+        options.JsonSerializerOptions.DictionaryKeyPolicy = System.Text.Json.JsonNamingPolicy.CamelCase; // 針對 Dictionary 關鍵
+    });
+
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 

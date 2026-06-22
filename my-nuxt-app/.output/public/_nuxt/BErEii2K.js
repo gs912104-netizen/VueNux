@@ -1,0 +1,1 @@
+import{_ as n,c as r,a as o,o as t}from"./DSeqfiVE.js";const s={};function c(a,e){return t(),r("div",null,[...e[0]||(e[0]=[o("h2",null,"🏠 系統首頁 (SSR 渲染)",-1),o("p",{style:{color:"#666"}},"這是首頁內容。當你重新整理此頁面時，右鍵檢視原始碼會看到完整的 HTML，這就是 SSR 的優勢。",-1)])])}const _=n(s,[["render",c]]);export{_ as default};

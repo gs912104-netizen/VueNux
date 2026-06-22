@@ -9,6 +9,9 @@ declare module "nitropack/types" {
     '/api/products/:id': {
       'default': Simplify<Serialize<Awaited<ReturnType<typeof import('../../server/api/products/[id]').default>>>>
     }
+    '/api/products': {
+      'default': Simplify<Serialize<Awaited<ReturnType<typeof import('../../server/api/products/index').default>>>>
+    }
     '/__nuxt_error': {
       'default': Simplify<Serialize<Awaited<ReturnType<typeof import('../../node_modules/@nuxt/nitro-server/dist/runtime/handlers/renderer').default>>>>
     }

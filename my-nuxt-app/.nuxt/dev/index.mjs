@@ -2159,7 +2159,22 @@ _Lg7DNWdAK09p2cdSPu820qAYQW16sWhclHA4xJEwgxI,
 _wH6JrtIxmaSoA8lCPWFnE9z4lQeXW6H5z3l5aymEQw
 ];
 
-const assets = {};
+const assets = {
+  "/index.mjs": {
+    "type": "text/javascript; charset=utf-8",
+    "etag": "\"1ace9-JtF1XItqPwjAEuFBEyeP1/NBMIk\"",
+    "mtime": "2026-06-22T06:45:48.616Z",
+    "size": 109801,
+    "path": "index.mjs"
+  },
+  "/index.mjs.map": {
+    "type": "application/json",
+    "etag": "\"6aaf9-85MhdivDTBK/JCJb3tDzZAp6JGY\"",
+    "mtime": "2026-06-22T06:45:48.617Z",
+    "size": 436985,
+    "path": "index.mjs.map"
+  }
+};
 
 function readAsset (id) {
   const serverDir = dirname$1(fileURLToPath(globalThis._importMeta_.url));
@@ -2691,12 +2706,14 @@ async function getIslandContext(event) {
 
 const _lazy_qkdl6D = () => Promise.resolve().then(function () { return marketData$1; });
 const _lazy_m5j3KA = () => Promise.resolve().then(function () { return _id_$1; });
+const _lazy_v3Q1Lk = () => Promise.resolve().then(function () { return index$1; });
 const _lazy_Xjnxqq = () => Promise.resolve().then(function () { return renderer; });
 
 const handlers = [
   { route: '', handler: _8Agz7y, lazy: false, middleware: true, method: undefined },
   { route: '/api/market-data', handler: _lazy_qkdl6D, lazy: true, middleware: false, method: undefined },
   { route: '/api/products/:id', handler: _lazy_m5j3KA, lazy: true, middleware: false, method: undefined },
+  { route: '/api/products', handler: _lazy_v3Q1Lk, lazy: true, middleware: false, method: undefined },
   { route: '/__nuxt_error', handler: _lazy_Xjnxqq, lazy: true, middleware: false, method: undefined },
   { route: '/__nuxt_island/**', handler: handler$1, lazy: false, middleware: false, method: undefined },
   { route: '/**', handler: _lazy_Xjnxqq, lazy: true, middleware: false, method: undefined }
@@ -3084,6 +3101,29 @@ const _id_ = defineEventHandler(async (event) => {
 const _id_$1 = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
   __proto__: null,
   default: _id_
+}, Symbol.toStringTag, { value: 'Module' }));
+
+const index = defineEventHandler(async (event) => {
+  const config = useRuntimeConfig();
+  const dotnetApiBase = config.public.apiBase || "http://localhost:5031";
+  try {
+    const data = await $fetch(`${dotnetApiBase}/api/product`, {
+      headers: {
+        "Authorization": "Bearer SERVER_SECRET_TOKEN_HERE"
+      }
+    });
+    return data;
+  } catch (error) {
+    throw createError({
+      statusCode: 500,
+      message: "\u7121\u6CD5\u53D6\u5F97\u5F8C\u7AEF\u5546\u54C1\u5217\u8868\u8CC7\u6599"
+    });
+  }
+});
+
+const index$1 = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
+  __proto__: null,
+  default: index
 }, Symbol.toStringTag, { value: 'Module' }));
 
 function renderPayloadResponse(ssrContext) {
