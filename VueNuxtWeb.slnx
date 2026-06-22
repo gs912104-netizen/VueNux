@@ -1,0 +1,8 @@
+<Solution>
+  <Project Path="DotNet10Api\DotNet10Api.csproj" />
+
+   <Project Path="my-nuxt-app\my-nuxt-app.esproj">
+    <Build />
+    <Deploy />
+  </Project>
+</Solution>
