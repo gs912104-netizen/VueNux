@@ -12,10 +12,10 @@ public class ProductController : ControllerBase
     // 💡 優化：加上 static readonly 讓資料在記憶體中只有一份（模擬虛擬資料庫狀態）
     private static readonly List<Dictionary<string, object>> _productsDb = new()
     {
-        new() { { "Id", "1001" }, { "Name", "精選海外債券商品 A" }, { "Price", 105.25 } },
-        new() { { "Id", "1002" }, { "Name", "高收益平衡基金 B" }, { "Price", 98.50 } },
-        new() { { "Id", "1003" }, { "Name", "永續 ESG 科技 ETF" }, { "Price", 25.15 } },
-        new() { { "Id", "1004" }, { "Name", "抗通膨黃金連動結構商品" }, { "Price", 210.00 } }
+        new() { { "id", "1001" }, { "name", "精選海外債券商品 A" }, { "price", 105.25 } },
+        new() { { "id", "1002" }, { "name", "高收益平衡基金 B" }, { "price", 98.50 } },
+        new() { { "id", "1003" }, { "name", "永續 ESG 科技 ETF" }, { "price", 25.15 } },
+        new() { { "id", "1004" }, { "name", "抗通膨黃金連動結構商品" }, { "price", 210.00 } }
     };
 
     // 💡 獲取產品清單 API
