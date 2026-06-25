@@ -1,0 +1,16 @@
+{
+  "version": "1.0.0",
+  "name": "jepun.pdf",
+  "private": true,
+  "description": "Grunt Tools for Publish",
+  "devDependencies": {
+    "grunt": "~1.6.1",
+    "grunt-bower-task": "~0.6.2",
+    "grunt-contrib-clean": "~2.0.0",
+    "grunt-contrib-copy": "~1.0.0",
+    "grunt-contrib-cssmin": "~5.0.0",
+    "grunt-contrib-jshint": "~3.2.0",
+    "grunt-contrib-uglify": "~5.2.2",
+    "grunt-contrib-watch": "~1.1.0"
+  }
+}

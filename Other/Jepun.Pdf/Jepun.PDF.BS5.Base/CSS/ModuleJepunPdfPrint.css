@@ -1,0 +1,33 @@
+﻿/** Jepun Pdf Editor PDF編輯器新版本 **/
+.JpPEToolBox {
+    display:none;
+}
+@media print {
+    .preloader {
+        display: none !important;
+    }
+    body #ModulePdfPrint {
+        display: block;
+    }
+
+    #ModulePdfPrint {
+        height: 100%;
+    }
+        /* wrapper around (scaled) print canvas elements */
+        #ModulePdfPrint  .JpPEContenter {
+            page-break-after: always;
+            page-break-inside: avoid;
+            /* The wrapper always cover the whole page. */
+            height: 100%;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #ModulePdfPrint .JpPEToolBox {
+            display: none;
+        }
+
+}

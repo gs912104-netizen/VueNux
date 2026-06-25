@@ -1,0 +1,791 @@
+﻿/** Jepun Pdf Editor PDF編輯器新版本 **/
+.block {
+    overflow:unset;
+}
+[data-jepun-control="jepunPdfEditor"], [data-jepun-control="jepunPdfDeveloper"] {
+    position: relative;
+}
+.JpPEContenter {
+    position: relative;
+    margin-bottom: 20px;
+    overflow: hidden;
+    border: 1px dashed rgba(0,0,0,0.3);
+}
+
+.JpPENoWorkMask {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    background: none;
+    margin: 0;
+    z-index: 11;
+}
+
+.JpPEBG {
+    width: 100%;
+}
+
+.JpPEOtherBG {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    background: none;
+    margin: 0;
+    z-index: 1;
+}
+
+.JpPESign {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    background: none;
+    margin: 0;
+    /*z-index: 2;*/
+}
+
+.JpPEToolBox {
+    z-index: 1040;
+    padding-bottom: 6px;
+    position: absolute;
+    top: -25px;
+    left: calc(50% - 150px);
+    transition: all 250ms ease-out;
+    /*    width: 100%;
+    display: flex;
+    justify-content: center;
+    left:0;*/
+}
+
+    .JpPEToolBox.fixed-Top {
+        position: fixed;
+        top: 4em;
+    }
+
+    .JpPEToolBox:after {
+        content: "";
+        display: block;
+        width: 0;
+        height: 0;
+        position: absolute;
+        border-top: 6px solid #fff;
+        border-left: 6px solid transparent;
+        border-right: 6px solid transparent;
+        left: 50%;
+        bottom: 0;
+        -webkit-transform: translateX(-50%);
+        -ms-transform: translateX(-50%);
+        transform: translateX(-50%);
+    }
+
+.JpPEArea {
+    background-color: #fff;
+    border-radius: 10px;
+    -webkit-box-shadow: 0 0 24px 0 rgba(0,0,0,.2);
+    box-shadow: 0 0 24px 0 rgba(0,0,0,.2);
+}
+
+    .JpPEArea .JpPETB {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        /*-ms-flex-wrap: nowrap;
+        flex-wrap: nowrap;*/
+        -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+        max-width: 295px;
+        justify-content: center;
+    }
+        .JpPEArea .JpPETB .JpPETBsec {
+            width: 100%;
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -ms-flex-wrap: nowrap;
+            flex-wrap: nowrap;
+            /*border-top: 1px dashed #5ccdde94;
+            box-shadow: inset 0px 6px 15px 1px #5ccdde21;
+            border-radius: 0px 0px 5px 5px;
+            box-shadow: 0 4px 8px 3px rgb(0 0 0 / 30%);*/
+            border-radius: 0px 0px 15px 15px;
+            position: relative;
+            overflow: hidden;
+            justify-content: space-around;
+        }
+            .JpPEArea .JpPETB .JpPETBsec.fixed-Top {
+                position:absolute;
+            }
+
+            .JpPEArea .JpPETB .JpPETBsec:before {
+                content: '';
+                position: absolute;
+                width: 100%;
+                height: 20px;
+                box-shadow: 0px 1px 6px rgb(0 0 0 / 30%);
+                top: -18px;
+                border-radius: 6px;
+            }
+
+    .JpPEArea .JpPETool {
+        -webkit-box-flex: 0;
+        -ms-flex: 0 0 24px;
+        flex: 0 0 24px;
+        padding: 12px;
+        cursor: pointer;
+        color: #212121;
+    }
+        .JpPEArea .JpPETool .onactive {
+            display: none;
+        }
+
+        .JpPEArea .JpPETool.active {
+            color: #5ccdde;
+            text-shadow: 1px 1px #000;
+        }
+            .JpPEArea .JpPETool.active .noactive {
+                display: none;
+            }
+
+            .JpPEArea .JpPETool.active .onactive {
+                display: inline-block;
+            }
+
+        .JpPEArea .JpPETool .JpPEColor {
+            border: 0;
+            width: 18px;
+            height: 20px;
+            background-color: #fff;
+            cursor: pointer;
+        }
+
+/*
+.DrawerETB {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 13;
+    padding-bottom: 6px;
+}
+
+    .DrawerETB:after {
+        content: "";
+        display: block;
+        width: 0;
+        height: 0;
+        position: absolute;
+        border-top: 6px solid #fff;
+        border-left: 6px solid transparent;
+        border-right: 6px solid transparent;
+        left: 50%;
+        bottom: 0;
+        -webkit-transform: translateX(-50%);
+        -ms-transform: translateX(-50%);
+        transform: translateX(-50%);
+    }
+
+.deArea {
+    background-color: #fff;
+    border-radius: 10px;
+    -webkit-box-shadow: 0 0 24px 0 rgba(0,0,0,.2);
+    box-shadow: 0 0 24px 0 rgba(0,0,0,.2);
+}
+
+    .deArea .deToolBox {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -ms-flex-wrap: nowrap;
+        flex-wrap: nowrap;
+    }
+
+    .deArea .deTool {
+        -webkit-box-flex: 0;
+        -ms-flex: 0 0 24px;
+        flex: 0 0 24px;
+        padding: 12px;
+        cursor: pointer;
+        color: #212121;
+    }
+
+.dmask {
+    background: rgba(255,0,0, 0.3) none repeat scroll 0 0;
+    border: 1px dashed rgba(255,0,0,0.4);
+    position: absolute;
+    top: 0;
+}
+*/
+
+
+/**Pdf Editor**/
+.JpPEEditor {
+    position: absolute;
+    z-index: 10;
+    width: 100%;
+    height: 100%;
+}
+
+
+.JpPEEditorTB {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 13;
+    padding-bottom: 6px;
+}
+
+    .JpPEEditorTB:after {
+        content: "";
+        display: block;
+        width: 0;
+        height: 0;
+        position: absolute;
+        border-top: 6px solid #fff;
+        border-left: 6px solid transparent;
+        border-right: 6px solid transparent;
+        left: 50%;
+        bottom: 0;
+        -webkit-transform: translateX(-50%);
+        -ms-transform: translateX(-50%);
+        transform: translateX(-50%);
+    }
+
+.JpPEPeArea {
+    background-color: #fff;
+    border-radius: 10px;
+    -webkit-box-shadow: 0 0 24px 0 rgba(0,0,0,.2);
+    box-shadow: 0 0 24px 0 rgba(0,0,0,.2);
+}
+
+    .JpPEPeArea .JpPEPeToolBox {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -ms-flex-wrap: nowrap;
+        flex-wrap: nowrap;
+    }
+
+    .JpPEPeArea .JpPEPeTool {
+        -webkit-box-flex: 0;
+        -ms-flex: 0 0 24px;
+        flex: 0 0 24px;
+        padding: 12px;
+        cursor: pointer;
+        color: #212121;
+    }
+
+.JpPEsitckOnEidt {
+    position: absolute;
+    z-index: 12;
+    top: 0;
+    left: 0;
+}
+
+.JpPE .CompositePhotoContent {
+    position: absolute;
+    top: 0;
+    overflow: hidden;
+    z-index: 12;
+    background: rgba(255, 255, 255, 0.2);
+    background-size: 35% auto;
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+}
+    .JpPE .CompositePhotoContent img {
+        vertical-align: top;
+    }
+
+    .JpPE .CompositePhotoContent .chopmask, .gallery-image-container .chopmask {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(255,255,255,0.75);
+        text-align: center;
+        font-weight: bolder;
+        z-index: 1;
+    }
+
+        .JpPE .CompositePhotoContent .chopmask .content, .gallery-image-container .chopmask .content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            word-break: break-all;
+        }
+
+        .JpPE .CompositePhotoContent .chopmask .marqueecontent, .gallery-image-container .chopmask .marqueecontent {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            display: flex;
+            justify-content: start;
+            animation: marqee 15s linear infinite;
+        }
+
+        .JpPE .CompositePhotoContent .chopmask .marqueecontents, .gallery-image-container .chopmask .marqueecontents {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100%;
+            display: flex;
+            justify-content: start;
+            word-break: break-all;
+        }
+        
+
+
+        .JpPE .CompositePhotoContent .chopmask.show + img, .gallery-image-container .chopmask.show + img {
+            filter: blur(8px);
+        }
+
+.JpPE .CompositePhotoContentBody {
+    position: absolute;
+    top: 0;
+    z-index: 10;
+}
+
+.JpPE .mask {
+    background: rgba(30%, 0%, 0%, 0) none repeat scroll 0 0;
+    border: 1px dashed rgba(0,0,0,0.4);
+    position: absolute;
+    top: 0;
+    z-index: 2;
+}
+    .JpPE .mask.stampmask {
+        background: rgba(255,0,0,.3) none repeat scroll 0 0;
+        border: 1px dashed rgba(255,0,0,.4);
+    }
+        .JpPE .mask.stampmask.compstamp {
+            background: rgba(30%, 0%, 0%, 0) none repeat scroll 0 0;
+            border: 1px dashed rgba(255,0,0,.4);
+        }
+    .JpPE .mask.columnmask {
+        background: rgba(255,255,0,.3) none repeat scroll 0 0;
+        border: 1px dashed rgba(127,127,127,.4);
+    }
+
+.JpPE .other {
+    background: none;
+}
+
+    .JpPE .other .mask {
+        background: none;
+        border: none;
+    }
+
+.JpPE .edit-ui {
+    display: none;
+}
+
+    .JpPE .edit-ui > a {
+        display: block;
+        position: absolute;
+        width: 28px;
+        height: 28px;
+        cursor: pointer;
+        z-index: 105;
+        opacity: 0.5;
+    }
+        .JpPE .edit-ui > a:hover {
+            background-position: left bottom;
+            opacity: 0.3;
+            /*opacity: 0.3;*/
+        }
+        .JpPE .edit-ui > a:hover + a, .edit-ui > a:hover ~ a {
+            /* opacity: 0;*/
+        }
+
+.JpPE a.move-btn {
+    top: -14px;
+    left: -14px;
+    background-image: url(../../img/modulePdf/layerui-move-btn.png);
+}
+
+.JpPE a.rotate-btn {
+    bottom: -14px;
+    left: -14px;
+    background-image: url(../../img/modulePdf/layerui-rotate-btn.png);
+}
+
+.JpPE a.scale-btn {
+    bottom: -14px;
+    right: -14px;
+    background-image: url(../../img/modulePdf/layerui-scale-btn.png);
+}
+.JpPE a.scale-proportional-btn {
+    bottom: -14px;
+    right: -14px;
+    background-image: url(../../img/modulePdf/layerui-scale-proportional-btn.png);
+}
+
+
+.JpPE a.delete-btn {
+    top: -14px;
+    right: -14px;
+    background-image: url(../../img/modulePdf/layerui-delete-btn.png);
+}
+
+.JpPE a.tool-btn {
+    bottom: -14px;
+    left: -14px;
+    background: rgb(9, 75,112);
+    border-radius: 100%;
+    text-align: center;
+    font-size: 20px;
+    color: #fff;
+}
+
+    .JpPE a.tool-btn:before {
+        content: attr(data-ord);
+    }
+
+.JpPE .edit-ui > a.tool-btn:hover {
+    background: #67c6e0;
+}
+
+.delFile {
+    position: absolute;
+    z-index: 2;
+    top: -10px;
+    right: 0;
+    color: red;
+}
+
+.JpPE .PdfLegend {
+    position: absolute;
+    width: 36px;
+    left: -1.2em;
+    background: #ffffff;
+    border-radius: 10px;
+    -webkit-box-shadow: 0 0 24px 0 rgba(0,0,0,.2);
+    box-shadow: 0 0 24px 0 rgba(0,0,0,.2);
+    padding: 8px;
+    z-index: 99;
+    transition: all 250ms ease-out;
+}
+
+    .JpPE .PdfLegend.fixed-Top {
+        position: fixed;
+        top: 10em;
+        left: 30px;
+    }
+
+    .JpPE .PdfLegend > span,
+    .JpPE .PdfLegend > div {
+        margin-bottom: 5px;
+        cursor: pointer;
+    }
+
+    .JpPE .PdfLegend > .badge.active {
+        background: #dae0e8 !important;
+        text-decoration: line-through;
+    }
+
+.JpPE .JpPETBsec {
+    position: absolute;
+    width: 36px;
+    right: -1.2em;
+    top: 0;
+    background: #ffffff;
+    border-radius: 10px;
+    -webkit-box-shadow: 0 0 24px 0 rgba(0,0,0,.2);
+    box-shadow: 0 0 24px 0 rgba(0,0,0,.2);
+    padding: 8px;
+    z-index: 99;
+    transition: all 250ms ease-out;
+}
+    .JpPE .JpPETBsec.fixed-Top {
+        position: fixed;
+        top: 10em ;/* 60px;*/
+        right: 30px;
+    }
+
+    .JpPE .JpPETBsec .JpPEToolsec {
+        -webkit-box-flex: 0;
+        -ms-flex: 0 0 24px;
+        flex: 0 0 24px;
+        padding: 6px 3px;
+        cursor: pointer;
+        color: #212121;
+    }
+
+        .JpPE .JpPETBsec .JpPEToolsec .onactive {
+            display: none;
+        }
+
+        .JpPE .JpPETBsec .JpPEToolsec.active {
+            color: #5ccdde;
+            text-shadow: 1px 1px #000;
+        }
+
+            .JpPE .JpPETBsec .JpPEToolsec.active .noactive {
+                display: none;
+            }
+
+            .JpPE .JpPETBsec .JpPEToolsec.active .onactive {
+                display: inline-block;
+            }
+
+        .JpPE .JpPETBsec .JpPEToolsec .JpPEColor {
+            border: 0;
+            width: 18px;
+            height: 20px;
+            background-color: #fff;
+            cursor: pointer;
+            margin-left: -3px;
+        }
+        .JpPE .JpPETBsec .JpPEToolsec .input-group-addon, .JpPE .JpPETBsec .JpPEToolsec .colorpicker-input-addon {
+            border: 0;
+            padding: 0;
+            min-width: 0;
+            width: 16px;
+        }
+            .JpPE .JpPETBsec .JpPEToolsec .colorpicker-input-addon:before {
+                content:none;
+            }
+
+/*選取文字區段CSS*/
+.textLayer {
+    position: absolute;
+    text-align: initial;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    overflow: hidden;
+    opacity: 0.2;
+    line-height: 1;
+    -webkit-text-size-adjust: none;
+    -moz-text-size-adjust: none;
+    text-size-adjust: none;
+}
+
+    .textLayer span,
+    .textLayer br {
+        color: transparent;
+        /*color:red;*/
+        position: absolute;
+        white-space: pre;
+        cursor: text;
+        transform-origin: 0% 0%;
+    }
+
+        /* Only necessary in Google Chrome, see issue 14205, and most unfortunately
+ * the problem doesn't show up in "text" reference tests. */
+        .textLayer span.markedContent {
+            top: 0;
+            height: 0;
+        }
+
+    .textLayer .highlight {
+        margin: -1px;
+        padding: 1px;
+        background-color: rgba(180, 0, 170, 1);
+        border-radius: 4px;
+    }
+
+        .textLayer .highlight.appended {
+            position: initial;
+        }
+
+        .textLayer .highlight.begin {
+            border-radius: 4px 0 0 4px;
+        }
+
+        .textLayer .highlight.end {
+            border-radius: 0 4px 4px 0;
+        }
+
+        .textLayer .highlight.middle {
+            border-radius: 0;
+        }
+
+        .textLayer .highlight.selected {
+            background-color: rgba(0, 100, 0, 1);
+        }
+
+    .textLayer ::-moz-selection {
+        background: rgba(0, 0, 255, 1);
+    }
+
+    .textLayer ::selection {
+        background: rgba(0, 0, 255, 1);
+    }
+
+    /* Avoids https://github.com/mozilla/pdf.js/issues/13840 in Chrome */
+    .textLayer br::-moz-selection {
+        background: transparent;
+    }
+
+    .textLayer br::selection {
+        background: transparent;
+    }
+
+    .textLayer .endOfContent {
+        display: block;
+        position: absolute;
+        left: 0;
+        top: 100%;
+        right: 0;
+        bottom: 0;
+        z-index: -1;
+        cursor: default;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+    }
+
+        .textLayer .endOfContent.active {
+            top: 0;
+        }
+
+/*編輯中版本*/
+.doEditor .textLayer {
+    z-index:-1;
+}
+.doEditor .JpPEEditor {
+    z-index: 12;
+}
+.doEditor .CompositePhotoContentBody {
+    z-index: 13;
+}
+
+
+.doDrawer .JpPESign {
+    z-index: 12;
+}
+
+.doTLayer .textLayer {
+    z-index: 12;
+}
+.changed .JpPEContenter {
+    border: 1px dashed rgba(255,0,0,1);
+}
+.JpPELoading {
+    display: none;
+    z-index: -999;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: rgba(255,255,255,0.7);
+    left: 0;
+    top: 0;
+    font-size: 5rem;
+    justify-content: center;
+    align-items: center;
+}
+    .JpPELoading:before {
+        content: "\f110";
+        -webkit-animation-iteration-count: infinite;
+        animation-iteration-count: infinite;
+        -webkit-transform-origin: center;
+        transform-origin: center;
+        -webkit-animation-duration: 1s;
+        animation-duration: 1s;
+        -webkit-animation-duration: var(--animate-duration);
+        animation-duration: var(--animate-duration);
+        -webkit-animation-fill-mode: both;
+        animation-fill-mode: both;
+        -webkit-animation-name: rotateIn;
+        animation-name: rotateIn;
+    }
+
+.JpPECanvasLoad ~ .JpPELoading {
+    display: flex;
+    z-index: 999;
+}
+
+
+.hasLoad .JpPELoading {
+    display: flex;
+    z-index: 999;
+}
+
+
+.changed .JpPEToolSave {
+    color: #c43902;
+    animation-name: pulse;
+    -webkit-animation-name: pulse;
+    animation-duration: 1.5s;
+    -webkit-animation-duration: 1.5s;
+    animation-iteration-count: infinite;
+    -webkit-animation-iteration-count: infinite;
+    text-shadow: 1px 1px 7px #ffffff;
+}
+.changed .JpPEArea, .changed.JpPE .JpPETBsec .JpPEToolsec .JpPEColor, .changed .JpPETBsec {
+    background: rgba(255,235,59,1);
+    background: #de815c;
+}
+.changed .JpPEToolBox:after {
+    border-top: 6px solid rgba(255,235,59,1);
+    border-top-color: #de815c;
+}
+
+
+.modal-center {
+    text-align: center;
+    padding: 0 !important;
+}
+
+    .modal-center:before {
+        content: '';
+        display: inline-block;
+        height: 100%;
+        vertical-align: middle;
+        margin-right: -4px;
+    }
+
+.modal-dialog-center {
+    display: inline-block;
+    text-align: left;
+    vertical-align: middle;
+}
+.modal-body-pdf {
+    padding: 20px 20px;
+}
+@media(max-width:768px) {
+    .modal-center {
+        
+    }
+    .modal-body-pdf {
+        padding: 20px 15px;
+    }
+    .modal-center:before {
+        content: none;
+    }
+    .modal-center .modal-dialog-center {
+        margin: 10px !important;
+        display: block;
+    }
+}
+
+@keyframes marqee {
+    0% {
+        left: 100%;
+        transform: translateX(0%);
+        transform: translateY(-50%);
+    }
+
+    100% {
+        left: -100%;
+        transform: translateX(-100%);
+        transform: translateY(-50%);
+    }
+}
+
+/** 修正 JepunOnlyRead **/
+.JepunOnlyRead .JpPETool[_dtb="1"], .JepunOnlyRead .JpPETBsec {
+    display: none;
+}
+
+.JepunOnlyRead .doEditor .textLayer, .JepunOnlyRead .doEditor .JpPEEditor, .JepunOnlyRead .doEditor .CompositePhotoContentBody, .JepunOnlyRead .doDrawer .JpPESign, .JepunOnlyRead .doTLayer .textLayer {
+    z-index: 0;
+}
+
